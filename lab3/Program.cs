@@ -21,6 +21,11 @@ class Figures
         try
         {
           r = Convert.ToDouble(Console.ReadLine());
+          bool check = Check(r);
+          if (check == false)
+          {
+            throw new Exception("Radius must be > 0");
+          }
           double res = Circle.CircleSquare(r);
           Console.WriteLine("Square of circle = " + res);
         }
@@ -35,6 +40,14 @@ class Figures
           Console.WriteLine("Paste height:");
           height = Convert.ToDouble(Console.ReadLine());
 
+          bool _check_width = Check(width);
+          bool _check_height = Check(height);
+
+          if (_check_width == false || _check_height == false)
+          {
+            throw new Exception("Width or height must be > 0");
+          }
+
           double res = Rectangle.RectangleSquare(width, height);
           Console.WriteLine("Square of rectangle = " + res);
         }
@@ -46,6 +59,11 @@ class Figures
         Console.WriteLine("Wrong choice");
         break;
     }
+  }
+
+  private static bool Check(double value)
+  {
+    return value > 0;
   }
 
 
